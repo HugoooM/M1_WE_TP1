@@ -12,22 +12,18 @@ canvas.height=600
 /////
 
 
-var drawing = new Drawing();
-drawing.paint(ctx, canvas);
 
 // Code temporaire pour tester l'affiche de la vue
-console.log('dessin rect');
-var rec = new Rectangle(10, 20, 50, 100, 5, '#00CCC0');
-rec.paint(ctx);
+//var rec = new Rectangle(10, 20, 50, 100, 5, '#00CCC0');
+//rec.paint(ctx);
 
-console.log('dessin rect2');
-var ligne = new Rectangle(10, 20, 50, 100, 5, '#00CCC0');
-ligne.paint(ctx);
+//var ligne = new Rectangle(10, 20, 50, 100, 5, '#00CCC0');
+//ligne.paint(ctx);
 // tester également Dessin.
 ////
 
 // Code final à utiliser pour manipuler Pencil.
-//var drawing = new Drawing();
-//var pencil = new Pencil(ctx, drawing, canvas);
-//drawing.paint(ctx, canvas);
+var drawing = new Drawing();
+var pencil = new Pencil(ctx, drawing, canvas);
+drawing.paint(ctx, canvas);
 
