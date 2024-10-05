@@ -8,7 +8,7 @@ function Shape(thickness, currColour){
 }
 
 function Drawing() {
-    this.drawings = [];
+    this.drawings = new Map();
 }
 
 function Rectangle(x, y, width, height, thickness, currColour){
@@ -19,7 +19,8 @@ function Rectangle(x, y, width, height, thickness, currColour){
     this.width = width;
 }
 
-Rectangle.prototype = new Shape();
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
 
 function Line(x1, x2, y1, y2, thickness, currColour){
     Shape.call(this, thickness, currColour);
@@ -29,7 +30,8 @@ function Line(x1, x2, y1, y2, thickness, currColour){
     this.y_final = y2;
 }
 
-Line.prototype = new Shape();
+Line.prototype = Object.create(Shape.prototype);
+Line.prototype.constructor = Line;
 
 // Rectangle function
 Rectangle.prototype.getInitX = function() {

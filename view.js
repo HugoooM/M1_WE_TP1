@@ -18,11 +18,9 @@ Line.prototype.paint = function(ctx) {
 };
 
 Drawing.prototype.paint = function(ctx) {
-    //console.log(this.getForms());
     ctx.fillStyle = '#F0F0F0'; // set canvas' background color
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     this.getForms().forEach(function (eltDuTableau) {
-        // now fill the canvas
         eltDuTableau.paint(ctx);
     });
 };
@@ -30,4 +28,34 @@ Drawing.prototype.paint = function(ctx) {
 Shape.prototype.paint = function (ctx){
     this.currColour = ctx.currColour;
     this.thickness = ctx.thickness;
+}
+
+function updateShapeList(drawings){
+    var ul = document.getElementById("shapeList");
+    ul.innerHTML = ''; // Clear list
+
+    drawings.forEach(function(shape, id){
+        var li = document.createElement("li");
+        li.id = id;
+        var text = document.createTextNode(shape.constructor.name + ' - ' +
+            shape.currColour + ' - ' + shape.thickness + 'px');
+        li.appendChild(text);
+
+        var button = document.createElement("button");
+        button.addEventListener('click', function (){
+            deleteShape(id, drawings);
+        });
+        var text  = document.createTextNode('Supprimer la forme');
+        button.appendChild(text);
+
+        li.appendChild(button);
+        ul.appendChild(li);
+    });
+}
+
+function deleteShape(id, drawings){
+    drawings.delete(id);
+    document.getElementById(id).remove();
+    drawing.paint(ctx);
+
 }
