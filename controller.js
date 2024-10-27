@@ -1,4 +1,3 @@
-
 var editingMode = { rect: 0, line: 1 };
 
 function Pencil(ctx, drawing, canvas) {
